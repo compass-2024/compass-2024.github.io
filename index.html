@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compass | Study & Research Club</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f8fb;
+      color: #333;
+    }
+
+    header {
+      background: #005f73;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    nav {
+      background: #0a9396;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #e9d8a6;
+    }
+
+    .hero {
+      padding: 40px 20px;
+      text-align: center;
+      background: #94d2bd;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .card-container {
+        flex-direction: row;
+      }
+
+      .card {
+        flex: 1;
+      }
+    }
+
+    .contact-section {
+      background: #e9ecef;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #005f73;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      color: #005f73;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-links a:hover {
+      color: #ae2012;
+    }
+
+    .social-links img {
+      width: 30px;
+      height: 30px;
+    }
+
+    footer {
+      background: #005f73;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>COMPASS</h1>
+    <p>Study & Research Club, SZMC</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="https://funky-salamander-4cd.notion.site/Events-236880d8a7738027a780eb15a54b1a66?source=copy_link">Events</a>
+    <a href="https://funky-salamander-4cd.notion.site/Projects-236880d8a773803ea3f0c74a92a3cb70?source=copy_link">Projects</a>
+    <a href="https://funky-salamander-4cd.notion.site/Team-236880d8a77380f09f8ecdecaafdc6b2?source=copy_link">Team</a>
+    <a href="https://funky-salamander-4cd.notion.site/Our-App-237880d8a773806291d0cc46e0905839?source=copy_link">Our Apk</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Welcome to COMPASS</h2>
+    <p>Empowering future doctors through research, creativity, and collaboration.</p>
+  </section>
+
+  <section class="section">
+    <div class="card-container">
+      <div class="card">
+        <h3>Who We Are</h3>
+        <p>Compass is a student-led club based at Shaheed Ziaur Rahman Medical College (SZMC), focused on medical education, research, and community outreach.</p>
+      </div>
+      <div class="card">
+        <h3>What We Do</h3>
+        <p>We organize seminars, workshops, study circles, research training, and publish student-led journals and articles.</p>
+      </div>
+      <div class="card">
+        <h3>Join Us</h3>
+        <p>Be a part of something impactful! Learn, teach, explore, and lead with Compass. Membership open to all passionate SZMC students.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>📬 Connect With Us</h2>
+    <div class="social-links">
+      <a href="https://www.facebook.com/share/16c21jpsww/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook Page" />
+        Facebook Page
+      </a>
+      <a href="https://www.facebook.com/groups/1199379931607043/?ref=share&mibextid=NSMWBT" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook Group" />
+        Facebook Group
+      </a>
+      <a href="https://www.youtube.com/@Compass_Study_Research_Club" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube Channel" />
+        YouTube Channel
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Compass | Designed by Compass Team, SZMC
+  </footer>
+
+</body>
+</html>
