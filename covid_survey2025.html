@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Vaccination Survey</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        h2 {
+            color: #3498db;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .radio-group, .checkbox-group {
+            margin-bottom: 15px;
+        }
+        
+        .radio-option, .checkbox-option {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input, .checkbox-option input {
+            margin-right: 10px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 10px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .section-info {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>COVID-19 Vaccination Survey</h1>
+        
+        <div class="success-message" id="successMessage">
+            Thank you for completing the survey! Your response has been recorded.
+        </div>
+        
+        <div class="error-message" id="errorMessage">
+            There was an error submitting your response. Please try again.
+        </div>
+        
+        <form id="vaccinationSurvey">
+            <!-- Section A: Demographics -->
+            <h2>Section A: Demographics</h2>
+            
+            <div class="form-group">
+                <label for="name">Name: <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Age group (at the time of vaccination): <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="age1" name="age" value="<18 years" required>
+                        <label for="age1">a) &lt;18 years</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="age2" name="age" value="18–29 years">
+                        <label for="age2">b) 18–29 years</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="age3" name="age" value="30–44 years">
+                        <label for="age3">c) 30–44 years</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="age4" name="age" value="45–59 years">
+                        <label for="age4">d) 45–59 years</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="age5" name="age" value="≥60 years">
+                        <label for="age5">e) ≥60 years</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Gender: <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="gender1" name="gender" value="Male" required>
+                        <label for="gender1">a) Male</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="gender2" name="gender" value="Female">
+                        <label for="gender2">b) Female</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="gender3" name="gender" value="Other / Prefer not to say">
+                        <label for="gender3">c) Other / Prefer not to say</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Residence: <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="residence1" name="residence" value="Urban" required>
+                        <label for="residence1">a) Urban</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="residence2" name="residence" value="Semi-urban">
+                        <label for="residence2">b) Semi-urban</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="residence3" name="residence" value="Rural">
+                        <label for="residence3">c) Rural</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section B: General Information -->
+            <h2>Section B: General Information</h2>
+            
+            <div class="form-group">
+                <label>Which COVID-19 vaccine did you receive? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="vaccine1" name="vaccine" value="Oxford-AstraZeneca (Covishield)" required>
+                        <label for="vaccine1">a) Oxford-AstraZeneca (Covishield)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="vaccine2" name="vaccine" value="Sinopharm">
+                        <label for="vaccine2">b) Sinopharm</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="vaccine3" name="vaccine" value="Pfizer-BioNTech">
+                        <label for="vaccine3">c) Pfizer-BioNTech</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="vaccine4" name="vaccine" value="Moderna">
+                        <label for="vaccine4">d) Moderna</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="vaccine5" name="vaccine" value="Johnson & Johnson">
+                        <label for="vaccine5">e) Johnson & Johnson</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="vaccine6" name="vaccine" value="Don’t know / Not sure">
+                        <label for="vaccine6">f) Don't know / Not sure</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>How many doses of COVID-19 vaccine have you received? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="doses1" name="doses" value="1 dose" required>
+                        <label for="doses1">a) 1 dose</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="doses2" name="doses" value="2 doses">
+                        <label for="doses2">b) 2 doses</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="doses3" name="doses" value="3 doses (booster included)">
+                        <label for="doses3">c) 3 doses (booster included)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="doses4" name="doses" value="None">
+                        <label for="doses4">d) None</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section C: Side Effects -->
+            <h2>Section C: Side Effects</h2>
+            
+            <div class="form-group">
+                <label>Did you experience any side effects after vaccination? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="effects1" name="effects" value="Yes, mild" required>
+                        <label for="effects1">a) Yes, mild</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="effects2" name="effects" value="Yes, severe">
+                        <label for="effects2">b) Yes, severe</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="effects3" name="effects" value="No side effects">
+                        <label for="effects3">c) No side effects</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Which of the following side effects did you experience? (Select the most significant one) <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="sideEffect1" name="sideEffect" value="Fever" required>
+                        <label for="sideEffect1">a) Fever</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="sideEffect2" name="sideEffect" value="Body pain / muscle ache">
+                        <label for="sideEffect2">b) Body pain / muscle ache</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="sideEffect3" name="sideEffect" value="Headache">
+                        <label for="sideEffect3">c) Headache</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="sideEffect4" name="sideEffect" value="Fatigue / weakness">
+                        <label for="sideEffect4">d) Fatigue / weakness</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="sideEffect5" name="sideEffect" value="Local pain / swelling at injection site">
+                        <label for="sideEffect5">e) Local pain / swelling at injection site</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="sideEffect6" name="sideEffect" value="Allergic reaction (rash, difficulty breathing, etc.)">
+                        <label for="sideEffect6">f) Allergic reaction (rash, difficulty breathing, etc.)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="sideEffect7" name="sideEffect" value="No side effect">
+                        <label for="sideEffect7">g) No side effect</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>How long did the side effects last? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="duration1" name="duration" value="Less than 24 hours" required>
+                        <label for="duration1">a) Less than 24 hours</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="duration2" name="duration" value="1–2 days">
+                        <label for="duration2">b) 1–2 days</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="duration3" name="duration" value="3–5 days">
+                        <label for="duration3">c) 3–5 days</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="duration4" name="duration" value="More than 5 days">
+                        <label for="duration4">d) More than 5 days</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="duration5" name="duration" value="Still continuing">
+                        <label for="duration5">e) Still continuing</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section D: Pre-existing Diseases -->
+            <h2>Section D: Pre-existing Diseases in Bangladesh</h2>
+            
+            <div class="form-group">
+                <label>Do you have any of the following pre-existing conditions? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="condition1" name="condition" value="Diabetes" required>
+                        <label for="condition1">a) Diabetes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="condition2" name="condition" value="Hypertension (High blood pressure)">
+                        <label for="condition2">b) Hypertension (High blood pressure)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="condition3" name="condition" value="Asthma / COPD">
+                        <label for="condition3">c) Asthma / COPD</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="condition4" name="condition" value="Tuberculosis">
+                        <label for="condition4">d) Tuberculosis</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="condition5" name="condition" value="Heart disease">
+                        <label for="condition5">e) Heart disease</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="condition6" name="condition" value="Kidney disease">
+                        <label for="condition6">f) Kidney disease</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="condition7" name="condition" value="No major disease">
+                        <label for="condition7">g) No major disease</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>If you have a pre-existing disease, did vaccination worsen your condition temporarily?</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="worsen1" name="worsen" value="Yes">
+                        <label for="worsen1">a) Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="worsen2" name="worsen" value="No">
+                        <label for="worsen2">b) No</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="worsen3" name="worsen" value="Not sure">
+                        <label for="worsen3">c) Not sure</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>For people with diabetes: Did you notice any effect on your blood sugar after vaccination?</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="diabetes1" name="diabetes" value="Increased significantly">
+                        <label for="diabetes1">a) Increased significantly</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="diabetes2" name="diabetes" value="Slightly increased">
+                        <label for="diabetes2">b) Slightly increased</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="diabetes3" name="diabetes" value="No change">
+                        <label for="diabetes3">c) No change</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="diabetes4" name="diabetes" value="Decreased">
+                        <label for="diabetes4">d) Decreased</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="diabetes5" name="diabetes" value="Not applicable">
+                        <label for="diabetes5">e) Not applicable</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>For people with hypertension: Did you experience abnormal blood pressure after vaccination?</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="hypertension1" name="hypertension" value="Yes, increase in BP">
+                        <label for="hypertension1">a) Yes, increase in BP</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="hypertension2" name="hypertension" value="Yes, decrease in BP">
+                        <label for="hypertension2">b) Yes, decrease in BP</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="hypertension3" name="hypertension" value="No change">
+                        <label for="hypertension3">c) No change</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="hypertension4" name="hypertension" value="Not applicable">
+                        <label for="hypertension4">d) Not applicable</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>After receiving the COVID-19 vaccine, have you developed any permanent or long-lasting health problems? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="permanent1" name="permanent" value="No permanent side effects" required>
+                        <label for="permanent1">a) No permanent side effects</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="permanent2" name="permanent" value="Worsening of diabetes control">
+                        <label for="permanent2">b) Worsening of diabetes control</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="permanent3" name="permanent" value="Worsening of hypertension (high blood pressure)">
+                        <label for="permanent3">c) Worsening of hypertension (high blood pressure)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="permanent4" name="permanent" value="Increased severity of asthma or COPD">
+                        <label for="permanent4">d) Increased severity of asthma or COPD</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="permanent5" name="permanent" value="Heart-related problems (e.g., chest pain, palpitations, myocarditis, clotting issues)">
+                        <label for="permanent5">e) Heart-related problems (e.g., chest pain, palpitations, myocarditis, clotting issues)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="permanent6" name="permanent" value="Neurological issues (e.g., weakness, persistent headache, memory problems, stroke)">
+                        <label for="permanent6">f) Neurological issues (e.g., weakness, persistent headache, memory problems, stroke)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="permanent7" name="permanent" value="Kidney or liver-related complications">
+                        <label for="permanent7">g) Kidney or liver-related complications</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="permanent8" name="permanent" value="Persistent joint or muscle pain">
+                        <label for="permanent8">h) Persistent joint or muscle pain</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="permanent9" name="permanent" value="Other permanent/long-lasting issue">
+                        <label for="permanent9">i) Other permanent/long-lasting issue (please specify)</label>
+                    </div>
+                </div>
+                <input type="text" id="otherPermanent" name="otherPermanent" placeholder="Please specify other issue" style="display: none;">
+            </div>
+            
+            <!-- Section E: Overall Perception -->
+            <h2>Section E: Overall Perception</h2>
+            
+            <div class="form-group">
+                <label>How satisfied are you with the COVID-19 vaccination program in Bangladesh? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="satisfaction1" name="satisfaction" value="Very satisfied" required>
+                        <label for="satisfaction1">a) Very satisfied</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="satisfaction2" name="satisfaction" value="Satisfied">
+                        <label for="satisfaction2">b) Satisfied</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="satisfaction3" name="satisfaction" value="Neutral">
+                        <label for="satisfaction3">c) Neutral</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="satisfaction4" name="satisfaction" value="Dissatisfied">
+                        <label for="satisfaction4">d) Dissatisfied</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="satisfaction5" name="satisfaction" value="Very dissatisfied">
+                        <label for="satisfaction5">e) Very dissatisfied</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Do you believe vaccination is safe for people with common Bangladeshi diseases (diabetes, hypertension, asthma, etc.)? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="safety1" name="safety" value="Strongly agree" required>
+                        <label for="safety1">a) Strongly agree</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="safety2" name="safety" value="Agree">
+                        <label for="safety2">b) Agree</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="safety3" name="safety" value="Neutral">
+                        <label for="safety3">c) Neutral</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="safety4" name="safety" value="Disagree">
+                        <label for="safety4">d) Disagree</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="safety5" name="safety" value="Strongly disagree">
+                        <label for="safety5">e) Strongly disagree</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="dailyIssues">Specify some daily issues that facing recent times:</label>
+                <textarea id="dailyIssues" name="dailyIssues" rows="4" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+            </div>
+            
+            <button type="submit">Submit Survey</button>
+        </form>
+        
+        <footer>
+            <p>© 2023 COVID-19 Vaccination Survey</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('vaccinationSurvey');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const otherPermanentInput = document.getElementById('otherPermanent');
+            
+            // Show/hide "other" input for permanent issues
+            document.querySelectorAll('input[name="permanent"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'Other permanent/long-lasting issue') {
+                        otherPermanentInput.style.display = 'block';
+                        otherPermanentInput.setAttribute('required', 'required');
+                    } else {
+                        otherPermanentInput.style.display = 'none';
+                        otherPermanentInput.removeAttribute('required');
+                    }
+                });
+            });
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic form validation
+                const requiredFields = form.querySelectorAll('[required]');
+                let valid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value) {
+                        valid = false;
+                        field.style.borderColor = 'red';
+                    } else {
+                        field.style.borderColor = '#ddd';
+                    }
+                });
+                
+                if (!valid) {
+                    errorMessage.textContent = 'Please fill in all required fields.';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                
+                // Prepare form data
+                const formData = new FormData(form);
+                const data = {};
+                
+                for (const [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+                
+                // Send data to Google Sheets
+                fetch('https://script.google.com/macros/s/AKfycbzRkPlTdK6RU5y_Ugb-5WwgWFLC6yXpO5jJiYgJYEQ7NQQ_bCvDEsiIfI7xISO1aR-UUw/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(() => {
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    form.reset();
+                    window.scrollTo(0, 0);
+                })
+                .catch(error => {
+                    errorMessage.textContent = 'There was an error submitting your response. Please try again.';
+                    errorMessage.style.display = 'block';
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
